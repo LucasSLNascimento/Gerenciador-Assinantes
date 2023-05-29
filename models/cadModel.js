@@ -4,6 +4,7 @@ const cadSchema = new mongoose.Schema({
     id: Number,
     Nome: String,
     Sobrenome: String,
+    Foto: String,
     Nascimento: String,
     Telefone: Number,
     Endereco: String,

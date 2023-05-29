@@ -8,14 +8,14 @@ class CadController{
         const resultado = await cadModel.create(assinante)
         res.status(201).json(resultado) 
     }
-    async listar(req, res){
-        const resultado = await cadModel.findOne({})
-        res.status(200).json(resultado)
+    async listar(req, res) {
+        const resultado = await cadModel.find({});
+        res.status(200).json(resultado);
     }
-    async buscarId(req, res){
-        const id = req.params.id
-        const resultado = await cadModel.find({'id': id})
-        res.status(200).json(resultado)
+    async buscarPorId(req, res) {
+        const id = req.params.id;
+        const resultado = await cadModel.findOne({ 'id': id });
+        res.status(200).json(resultado);
     }
     async atualizar(req, res){
         const id = req.params.id
@@ -31,4 +31,4 @@ class CadController{
     }
 }
 
-module.wxports = new CadController()
+module.exports = new CadController()
