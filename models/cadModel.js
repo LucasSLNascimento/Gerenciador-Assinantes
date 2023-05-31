@@ -4,13 +4,13 @@ const cadSchema = new mongoose.Schema({
     id: Number,
     Nome: String,
     Sobrenome: String,
-    Foto: String,
     Nascimento: String,
     Telefone: Number,
     Endereco: String,
     Cidade: String,
     Estado: String,
-    Status: Boolean
+    Status: String
+    //Status: Boolean
 })
 
 module.exports = mongoose.model('cads', cadSchema)
