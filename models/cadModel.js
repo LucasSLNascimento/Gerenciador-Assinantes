@@ -9,7 +9,8 @@ const cadSchema = new mongoose.Schema({
     Endereco: String,
     Cidade: String,
     Estado: String,
-    Status: String
+    Status: String,
+    Foto: String
     //Status: Boolean
 })
 
