@@ -33,39 +33,62 @@ class CadController {
             const resultado = await cadModel.findOne({ 'id': id });
             res.status(200).json(resultado);
         } catch (err) {
-            res.status(500).json({ error: 'Erro ao salvar este assinante' });
+            res.status(500).json({ error: 'Erro ao realizar busca por id' });
         }
     }
     async buscarPorNome(req, res) {
-        const Nome = req.params.Nome;
-        const resultado = await cadModel.find({ 'Nome': Nome })
-        res.status(200).json(resultado)
-
+        try {
+            const Nome = req.params.Nome;
+            const resultado = await cadModel.find({ 'Nome': Nome })
+            res.status(200).json(resultado)
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao realizar busca por nome' });
+        }
     }
     async buscarPorSobrenome(req, res) {
-        const Sobrenome = req.params.Sobrenome;
-        const resultado = await cadModel.find({ 'Sobrenome': Sobrenome })
-        res.status(200).json(resultado)
+        try {
+            const Sobrenome = req.params.Sobrenome;
+            const resultado = await cadModel.find({ 'Sobrenome': Sobrenome })
+            res.status(200).json(resultado)
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao realizar busca por sobrenome' });
+        }
     }
     async buscarPorCidade(req, res) {
-        const Cidade = req.params.Cidade;
-        const resultado = await cadModel.find({ 'Cidade': Cidade })
-        res.status(200).json(resultado)
+
+        try {
+            const Cidade = req.params.Cidade;
+            const resultado = await cadModel.find({ 'Cidade': Cidade })
+            res.status(200).json(resultado)
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao realizar busca por cidade' });
+        }
+
     }
     async buscarPorEstado(req, res) {
-        const Estado = req.params.Estado;
-        const resultado = await cadModel.find({ 'Estado': Estado })
-        res.status(200).json(resultado)
+        try {
+            const Estado = req.params.Estado;
+            const resultado = await cadModel.find({ 'Estado': Estado })
+            res.status(200).json(resultado)
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao realizar busca por estado' });
+        }
+
     }
 
     async buscarPorStatus(req, res) {
-        const Status = req.params.Status
-        const resultado = await cadModel.find({ 'Status': Status })
-        res.status(200).json(resultado)
+        try {
+            const Status = req.params.Status
+            const resultado = await cadModel.find({ 'Status': Status })
+            res.status(200).json(resultado)
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao realizar busca por status' });
+        }
+
     }
 
     async atualizar(req, res) {
- 
+        try {
             const id = req.params.id
             const _id = String((await cadModel.findOne({ 'id': id }))._id)
 
@@ -77,14 +100,21 @@ class CadController {
 
             await cadModel.findByIdAndUpdate(String(_id), req.body)
             res.status(200).send()
-
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao atualizar este assinante' });
+        }
 
     }
     async excluir(req, res) {
-        const id = req.params.id
-        const _id = String((await cadModel.findOne({ 'id': id }))._id)
-        await cadModel.findByIdAndRemove(String(_id))
-        res.status(200).send()
+        try {
+            const id = req.params.id
+            const _id = String((await cadModel.findOne({ 'id': id }))._id)
+            await cadModel.findByIdAndRemove(String(_id))
+            res.status(200).send()
+        } catch (err) {
+            res.status(500).json({ error: 'Erro ao excluir este assinante' });
+        }
+
     }
 }
 
